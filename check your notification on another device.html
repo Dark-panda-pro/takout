@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, viewport-fit=cover">
+
+<title>Enter a security code</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #1d2b34;
+    font-family: -apple-system, BlinkMacSystemFont,
+                 "SF Pro Display", "SF Pro Text",
+                 "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+    color: #f5f5f7;
+}
+
+.page {
+    width: 390px;
+    height: 844px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: #1d2b34;
+}
+
+/* Back arrow */
+.back {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 17px;
+    height: 17px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+.back::before,
+.back::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 17px;
+    height: 2.5px;
+    background: #f0f2f4;
+    border-radius: 4px;
+}
+
+.back::before {
+    transform: rotate(-43deg);
+    transform-origin: left center;
+}
+
+.back::after {
+    transform: rotate(43deg);
+    transform-origin: left center;
+}
+
+/* Account label */
+.account {
+    position: absolute;
+    top: 45px;
+    left: 17px;
+    right: 17px;
+
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+}
+
+/* Heading */
+h1 {
+    position: absolute;
+    top: 70px;
+    left: 17px;
+    right: 17px;
+
+    font-size: 29px;
+    line-height: 38px;
+    font-weight: 700;
+    letter-spacing: -0.7px;
+}
+
+/* Description */
+.description {
+    position: absolute;
+    top: 155px;
+    left: 17px;
+    right: 17px;
+
+    font-size: 17px;
+    line-height: 27px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+}
+
+/* image */
+.illustration{
+    position: absolute;
+    top: 250px;
+    left: 12px;
+    right: 12px;
+
+    max-width: calc(100% - 24px);
+    height: auto;
+    border-radius: 15px
+
+}
+
+
+/* approval */
+.illustration-container {
+    position: absolute;
+    top: 410px;
+    left: 12px;
+    right: 12px;
+}
+
+.illustration {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.approval-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    padding: 14px 10px;
+    background: transparent;
+}
+
+.approval-icon {
+    width: 35px;
+    height: 35px;
+
+    border: 2px solid #e7e7e7;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    flex-shrink: 0;
+}
+
+.approval-text {
+    line-height: 1.2;
+}
+
+.approval-title {
+    font-size: 16px;
+    color: #e6e6e6;
+    margin-bottom: 3px;
+}
+
+.approval-subtitle {
+    font-size: 14px;
+    color: #a1a1a1;
+}
+
+
+
+/* Try another */
+.other {
+    position: absolute;
+    top: 490px;
+    left: 17px;
+
+    width: 356px;
+    height: 52px;
+
+    border: 0.2;
+    border-radius: 28px;
+    border-color:#68767f;
+
+    background: transparent;
+    color: #999a9b;
+
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Small screens */
+@media (max-width: 389px) {
+    .page {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .illustration,
+    
+    .continue,
+    .other {
+        width: calc(100% - 34px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <button class="back" aria-label="Back"></button>
+
+    <div class="account">
+        Rutana Meherin • Instagram
+    </div>
+
+    <h1>
+        Check your notification on another device
+    </h1>
+
+    <div class="description">
+        A security code may be required when
+        you sign in from a new browser or device. Open the notificaiton we sent to approve this login. 
+    </div>
+
+    <div>
+        <img class="illustration" src="approval.png" alt="waiting for approval">
+    </div>
+    
+        <div class="illustration-container">
+
+             <div class="approval-box">
+         <div class="approval-icon">•••</div>
+
+        <div class="approval-text">
+            <div class="approval-title">Waiting for approval</div>
+            <div class="approval-subtitle">
+                Approve from the other device to<br>
+                continue.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <button class="other" type="button" onclick="location.href='code link send.html'">
+        Try another way
+    </button>
+</div>
+
+</body>
+</html>
