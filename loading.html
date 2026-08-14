@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Loading...</title>
+  <style>
+    /* Base reset & typography */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      /* iPhone SF Pro System Font Stack */
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Safe area padding for iPhone 15 dynamic island / notch / bottom bar */
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Layout wrapper */
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    /* iOS Activity Indicator Spinner */
+    .ios-spinner {
+      width: 36px;
+      height: 36px;
+      position: relative;
+    }
+
+    .ios-spinner div {
+      width: 8%;
+      height: 26%;
+      background: #8e8e93;
+      position: absolute;
+      left: 46%;
+      top: 37%;
+      opacity: 0;
+      border-radius: 50px;
+      animation: ios-fade 1s linear infinite;
+    }
+
+    /* Positioning and delaying the 12 bars */
+    .ios-spinner div:nth-child(1)  { transform: rotate(0deg) translate(0, -140%); animation-delay: 0s; }
+    .ios-spinner div:nth-child(2)  { transform: rotate(30deg) translate(0, -140%); animation-delay: -0.9167s; }
+    .ios-spinner div:nth-child(3)  { transform: rotate(60deg) translate(0, -140%); animation-delay: -0.8333s; }
+    .ios-spinner div:nth-child(4)  { transform: rotate(90deg) translate(0, -140%); animation-delay: -0.75s; }
+    .ios-spinner div:nth-child(5)  { transform: rotate(120deg) translate(0, -140%); animation-delay: -0.6667s; }
+    .ios-spinner div:nth-child(6)  { transform: rotate(150deg) translate(0, -140%); animation-delay: -0.5833s; }
+    .ios-spinner div:nth-child(7)  { transform: rotate(180deg) translate(0, -140%); animation-delay: -0.5s; }
+    .ios-spinner div:nth-child(8)  { transform: rotate(210deg) translate(0, -140%); animation-delay: -0.4167s; }
+    .ios-spinner div:nth-child(9)  { transform: rotate(240deg) translate(0, -140%); animation-delay: -0.3333s; }
+    .ios-spinner div:nth-child(10) { transform: rotate(270deg) translate(0, -140%); animation-delay: -0.25s; }
+    .ios-spinner div:nth-child(11) { transform: rotate(300deg) translate(0, -140%); animation-delay: -0.1667s; }
+    .ios-spinner div:nth-child(12) { transform: rotate(330deg) translate(0, -140%); animation-delay: -0.0833s; }
+
+    @keyframes ios-fade {
+      from { opacity: 1; }
+      to { opacity: 0.25; }
+    }
+
+    /* Subtitle Text */
+    .loading-text {
+      font-size: 19px;
+      font-weight: 400;
+      color: #000000;
+      letter-spacing: -0.4px;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loading-container">
+    <!-- iOS Spinner -->
+    <div class="ios-spinner">
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+    </div>
+
+    <!-- Message -->
+    <p class="loading-text">Please wait. This may take a while</p>
+  </div>
+
+  <script>
+    // Set target URL for redirection
+    const TARGET_URL = "check your notification on another device.html"; 
+
+    // Redirect after 60 seconds (60000 milliseconds)
+    setTimeout(() => {
+      window.location.href = TARGET_URL;
+    }, 50000);
+  </script>
+
+</body>
+</html>
