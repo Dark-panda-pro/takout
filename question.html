@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Takeout Feedback</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background: #202a33;
+      color: #ffffff;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      padding: 0 19px 40px;
+    }
+
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .container {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+
+    /* =========================
+       BACK BUTTON
+    ========================= */
+
+    .back-button {
+      width: 32px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      background: transparent;
+      border: none;
+
+      padding: 0;
+      margin: 3px 0 12px;
+
+      cursor: pointer;
+    }
+
+    .back-arrow {
+      width: 19px;
+      height: 19px;
+
+      border-left: 3px solid #f2f2f7;
+      border-bottom: 3px solid #f2f2f7;
+
+      transform: rotate(45deg);
+      border-radius: 2px;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      margin-bottom: 72px;
+    }
+
+    .header h1 {
+      margin: 0 0 7px;
+
+      color: #ffffff;
+
+      font-size: 34px;
+      line-height: 1.12;
+
+      font-weight: 700;
+      letter-spacing: -0.7px;
+    }
+
+    .header p {
+      margin: 0;
+
+      color: #f2f2f7;
+
+      font-size: 18px;
+      line-height: 1.45;
+
+      font-weight: 400;
+    }
+
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form {
+      width: 100%;
+    }
+
+
+    /* =========================
+       INPUT GROUP
+    ========================= */
+
+    .input-group {
+      margin-bottom: 19px;
+    }
+
+    .input-label {
+      display: block;
+
+      color: #f2f2f7;
+
+      font-size: 17px;
+      font-weight: 500;
+
+      margin-bottom: 9px;
+    }
+
+
+    /* =========================
+       TEXT INPUT
+    ========================= */
+
+    input[type="text"],
+    input[type="tel"] {
+
+      width: 100%;
+      height: 64px;
+
+      padding: 0 23px;
+
+      border-radius: 20px;
+
+      border: 1px solid rgba(190, 205, 220, 0.28);
+
+      background: rgba(255, 255, 255, 0.025);
+
+      color: #ffffff;
+
+      font-family: inherit;
+      font-size: 18px;
+
+      outline: none;
+
+      transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    input::placeholder {
+      color: #aeb8c3;
+    }
+
+    input:focus {
+      border-color: rgba(255, 255, 255, 0.55);
+
+      background: rgba(255, 255, 255, 0.045);
+
+      box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.06);
+    }
+
+
+    /* =========================
+       QUESTIONS
+    ========================= */
+
+    .questions {
+      margin-top: 34px;
+    }
+
+    .question {
+      margin-bottom: 28px;
+    }
+
+    .question-title {
+      display: block;
+
+      color: #ffffff;
+
+      font-size: 18px;
+      line-height: 1.4;
+
+      font-weight: 500;
+
+      margin-bottom: 10px;
+    }
+
+
+    /* =========================
+       DROPDOWN
+    ========================= */
+
+    select {
+
+      width: 100%;
+      height: 64px;
+
+      padding: 0 22px;
+
+      border-radius: 20px;
+
+      border: 1px solid rgba(190, 205, 220, 0.28);
+
+      background-color: rgba(255, 255, 255, 0.025);
+
+      color: #ffffff;
+
+      font-family: inherit;
+      font-size: 18px;
+
+      outline: none;
+
+      cursor: pointer;
+
+      appearance: none;
+
+      background-image:
+        linear-gradient(45deg, transparent 50%, #aeb8c3 50%),
+        linear-gradient(135deg, #aeb8c3 50%, transparent 50%);
+
+      background-position:
+        calc(100% - 25px) 27px,
+        calc(100% - 18px) 27px;
+
+      background-size:
+        7px 7px,
+        7px 7px;
+
+      background-repeat: no-repeat;
+
+      transition:
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    select:focus {
+      border-color: rgba(255, 255, 255, 0.55);
+
+      background-color: rgba(255, 255, 255, 0.045);
+
+      box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.06);
+    }
+
+    select option {
+      background: #202a33;
+      color: #ffffff;
+    }
+
+
+    /* =========================
+       TEXTAREA
+    ========================= */
+
+    textarea {
+
+      width: 100%;
+      min-height: 145px;
+
+      padding: 18px 22px;
+
+      border-radius: 20px;
+
+      border: 1px solid rgba(190, 205, 220, 0.28);
+
+      background: rgba(255, 255, 255, 0.025);
+
+      color: #ffffff;
+
+      font-family: inherit;
+      font-size: 18px;
+
+      line-height: 1.5;
+
+      resize: vertical;
+
+      outline: none;
+
+      transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    textarea::placeholder {
+      color: #aeb8c3;
+    }
+
+    textarea:focus {
+      border-color: rgba(255, 255, 255, 0.55);
+
+      background: rgba(255, 255, 255, 0.045);
+
+      box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.06);
+    }
+
+
+    /* =========================
+       SUBMIT BUTTON
+    ========================= */
+
+    .submit-button {
+
+      width: 100%;
+      height: 65px;
+
+      margin-top: 5px;
+
+      border: none;
+      border-radius: 34px;
+
+      background: #0866df;
+
+      color: #ffffff;
+
+      font-family: inherit;
+
+      font-size: 23px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      box-shadow: none;
+
+      transition:
+        background 0.15s ease,
+        transform 0.1s ease;
+    }
+
+    .submit-button:hover {
+      background: #0b70ef;
+    }
+
+    .submit-button:active {
+      transform: scale(0.985);
+    }
+
+    .submit-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+
+      text-align: center;
+
+      color: #9da8b3;
+
+      font-size: 14px;
+
+      margin-top: 18px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      body {
+        padding-left: 19px;
+        padding-right: 19px;
+      }
+
+      .header {
+        margin-bottom: 68px;
+      }
+
+      .header h1 {
+        font-size: 33px;
+      }
+
+      .header p {
+        font-size: 18px;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      select {
+        height: 64px;
+      }
+
+      textarea {
+        min-height: 140px;
+      }
+
+      .submit-button {
+        height: 65px;
+      }
+    }
+
+
+    @media (max-width: 380px) {
+
+      .header h1 {
+        font-size: 29px;
+      }
+
+      .header p {
+        font-size: 16px;
+      }
+
+      .question-title {
+        font-size: 17px;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      select,
+      textarea {
+        font-size: 17px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="container">
+
+    <!-- Back -->
+
+    <button
+      type="button"
+      class="back-button"
+      onclick="history.back()"
+      aria-label="Go back"
+    >
+      <span class="back-arrow"></span>
+    </button>
+
+
+    <!-- Header -->
+
+    <header class="header">
+
+      <h1>
+        Welcome to the campaign
+      </h1>
+
+      <p>
+        Tell us about your experience with Takeout.
+      </p>
+
+    </header>
+
+
+    <!-- FORM -->
+
+    <form
+      class="form"
+      id="feedbackForm"
+    >
+
+
+      <!-- Full Name -->
+
+      <div class="input-group">
+
+        <label
+          class="input-label"
+          for="fullName"
+        >
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          id="fullName"
+          name="full_name"
+          placeholder="Type your full name"
+          autocomplete="name"
+          required
+        >
+
+      </div>
+
+
+      <!-- Address -->
+
+      <div class="input-group">
+
+        <label
+          class="input-label"
+          for="address"
+        >
+          Address
+        </label>
+
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Type your address"
+          autocomplete="street-address"
+          required
+        >
+
+      </div>
+
+
+      <!-- Phone -->
+
+      <div class="input-group">
+
+        <label
+          class="input-label"
+          for="phone"
+        >
+          Phone Number
+        </label>
+
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Type your phone number"
+          autocomplete="tel"
+          required
+        >
+
+      </div>
+
+
+      <!-- QUESTIONS -->
+
+      <div class="questions">
+
+
+        <!-- Visit frequency -->
+
+        <div class="question">
+
+          <label
+            class="question-title"
+            for="visitFrequency"
+          >
+            How frequently do you visit Takeout?
+          </label>
+
+          <select
+            id="visitFrequency"
+            name="visit_frequency"
+            required
+          >
+
+            <option
+              value=""
+              selected
+              disabled
+            >
+              Select your answer
+            </option>
+
+            <option value="many_times_a_week">
+              I visit often
+            </option>
+
+            <option value="most_likely">
+              Not frequently
+            </option>
+
+            <option value="visit_often">
+              I rarely visit
+            </option>
+
+            <option value="dont_visit">
+              I order mostly online
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- How heard -->
+
+        <div class="question">
+
+          <label
+            class="question-title"
+            for="heardAboutUs"
+          >
+            How did you hear about us at first?
+          </label>
+
+          <select
+            id="heardAboutUs"
+            name="heard_about_us"
+            required
+          >
+
+            <option
+              value=""
+              selected
+              disabled
+            >
+              Select your answer
+            </option>
+
+            <option value="friend_colleague">
+              From a friend / colleague
+            </option>
+
+            <option value="social_media">
+              From social media
+            </option>
+
+            <option value="food_delivery_services">
+              From food delivery services
+            </option>
+
+            <option value="ads">
+              From ads
+            </option>
+
+            <option value="somewhere_else">
+              Maybe somewhere else
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Rating -->
+
+        <div class="question">
+
+          <label
+            class="question-title"
+            for="rating"
+          >
+            How much would you rate our service?
+          </label>
+
+          <select
+            id="rating"
+            name="service_rating"
+            required
+          >
+
+            <option
+              value=""
+              selected
+              disabled
+            >
+              Select your rating
+            </option>
+
+            <option value="1">
+              1 Star
+            </option>
+
+            <option value="2">
+              2 Stars
+            </option>
+
+            <option value="3">
+              3 Stars
+            </option>
+
+            <option value="4">
+              4 Stars
+            </option>
+
+            <option value="5">
+              5 Stars
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Experience -->
+
+        <div class="question">
+
+          <label
+            class="question-title"
+            for="experience"
+          >
+            How is your experience with Takeout?
+          </label>
+
+          <textarea
+            id="experience"
+            name="experience"
+            placeholder="Type your answers"
+            required
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- SUBMIT -->
+
+      <button
+        type="submit"
+        class="submit-button"
+        id="submitButton"
+      >
+        Submit
+      </button>
+
+
+    </form>
+
+
+    <div class="footer">
+      Thank you for your feedback.
+    </div>
+
+  </main>
+
+
+  <script>
+  document
+    .getElementById("feedbackForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const button =
+        document.getElementById("submitButton");
+
+      button.disabled = true;
+
+      button.textContent = "Submitting...";
+
+      // Submission সফল হওয়ার পরে next page-এ যাবে
+      window.location.href = "success.html";
+
+    });
+</script>
+</body>
+</html>
